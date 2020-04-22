@@ -36,7 +36,7 @@ pipeline {
             }
         }
         
-        stage ('Checkmarx Scan Stage') {
+        stage ('Checkmarx Scan Stage x') {
 
             steps {
                 echo "Hello World - Ackcent"
