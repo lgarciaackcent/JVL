@@ -66,6 +66,7 @@ pipeline {
 				username: '', 
 				vulnerabilityThresholdResult: 'FAILURE', 
 				waitForResultsEnabled: true])
+				
             }
         }
 	
