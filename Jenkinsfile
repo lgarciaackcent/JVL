@@ -24,14 +24,15 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                echo "Hello World Linux"
+                echo "Hello World Linux mvn"
                 //bat( script: "C:/LGV/tmp/lgv.bat", returnStatus=false )
                 //bat 'C:/LGV/tmp/lgv.bat'
 				//bat 'C:/LGV/Software/apache-maven-3.6.3-bin/apache-maven-3.6.3/bin/mvn clean compile'
 				//withMaven(maven: 'Maven_home', jdk: 'openjdk-8u242-b08') {
-                //    bat 'mvn clean compile'
-                //}
-                mvn clean compile
+				withMaven() {
+                    sh 'mvn clean compile'
+                }
+                //mvn clean compile
             }
         }
         
