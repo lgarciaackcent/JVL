@@ -24,7 +24,7 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                echo "Hello World"
+                echo "Hello World Linux"
                 //bat( script: "C:/LGV/tmp/lgv.bat", returnStatus=false )
                 //bat 'C:/LGV/tmp/lgv.bat'
 				//bat 'C:/LGV/Software/apache-maven-3.6.3-bin/apache-maven-3.6.3/bin/mvn clean compile'
