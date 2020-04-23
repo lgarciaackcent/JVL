@@ -27,7 +27,16 @@ static Object getJson( Object script, String path ) {
 	//myURLConnection.setRequestProperty("Accept", "application/json");
 	myURLConnection.setDoOutput(true);
 	String jsonInputString = "{\"username\": \"admin\", \"password\": \"HVAk3Ps^/x8WFYAZ(c3)7K.,|\"\"}";
-	String urlParameters  = "username=admin&password=HVAk3Ps^/x8WFYAZ(c3)7K.,|&param3=c";
+	//String urlParameters  = "username=admin&password=HVAk3Ps^/x8WFYAZ(c3)7K.,|&param3=c";
+	String urlParameters  = k_username + "=" + v_username + "&" +
+							k_passwd + "=" + v_passwd + "&" +
+							k_grant_type + "=" + v_grant_type + "&" +
+							k_scope + "=" + v_scope + "&" +
+							k_client_id + "=" + v_client_id + "&" +
+							k_client_secret + "=" + v_client_secret;
+	script.info( script, "Post" ) ;						
+	script.info( script, urlParameters ) ;	
+							
 	OutputStream os = myURLConnection.getOutputStream();
     byte[] input = jsonInputString.getBytes("utf-8");
     byte[] postData = urlParameters.getBytes("utf-8");
