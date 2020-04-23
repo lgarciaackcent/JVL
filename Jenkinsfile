@@ -64,6 +64,7 @@ pipeline {
             	script {
                 
                 	println( "----T0" );
+                	info(this, "hola perola");
                 	def res = getKK( "pepe" )
                 	echo "RETORNO - [ ${res} ] "
                 
