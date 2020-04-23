@@ -38,7 +38,7 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
 	myURLConnection.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
 	myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
     try {
-    	DataOutputStream wr = new DataOutputStream( conn.getOutputStream() );
+    	DataOutputStream wr = new DataOutputStream( myURLConnection.getOutputStream() );
    		wr.write( postData );
 	} catch ( ex ) {   
 		script.info( script, "Excepcion al escribir" );
