@@ -28,6 +28,8 @@ def info(script,msg){
 
 static String getKK( String pp ) {
 	System.out.println( "----getKK" );
+	this.echo "hola peroal" 
+	//[INFO] ${msg}" 
 	info(this,"SOME VERY USEFUL INFORMATION"); 
 	return "hola caracola";
 }
