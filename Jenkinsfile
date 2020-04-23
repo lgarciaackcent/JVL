@@ -23,7 +23,8 @@ private static Object getJson( String path ) {
 
 
 static String getKK( String pp ) {
-	println( "----getKK" );
+	System.out.println( "----getKK" );
+	return "hola caracola";
 }
 
 
