@@ -109,7 +109,7 @@ static String getPolicy( Object script, String token ) {
 	String getTokenURL = "http://checkmarx.ackcent.com:8080/cxarm/policymanager/projects/40030/violations";
 	
 	try {  
-    	def json = getJsonToken( script, getTokenURL, token );
+    	def json = getJsonPolicy( script, getTokenURL, token );
     	return json.policyId;
     
 	} catch ( e ) {   
