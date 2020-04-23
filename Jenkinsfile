@@ -157,7 +157,7 @@ pipeline {
                 
 				//bat 'C:/LGV/Software/apache-maven-3.6.3-bin/apache-maven-3.6.3/bin/mvn clean compile'
 				
-					if ( false ) {
+					if ( true ) {
                 	step([$class: 'CxScanBuilder', 
                 		comment: '110004 JVL2', credentialsId: '', excludeFolders: '', excludeOpenSourceFolders: '', exclusionsSetting: 'global', failBuildOnNewResults: false, failBuildOnNewSeverity: 'HIGH', 
 						fullScanCycle: 10, 
