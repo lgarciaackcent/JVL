@@ -162,7 +162,7 @@ pipeline {
 					if ( true ) {
                 	step([$class: 'CxScanBuilder', 
                 		sastEnabled: true,
-                	    incremental: false, 
+                	    incremental: true, 
                 	    	fullScanCycle: 10, 
                 	    waitForResultsEnabled: true,
                 	    vulnerabilityThresholdEnabled: false,
