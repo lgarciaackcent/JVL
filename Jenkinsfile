@@ -61,10 +61,10 @@ static String getModelId( Object script, String modelName ) {
     	script.info( script,  "----HOLA" );
     	def json = getJson( script, getTokenURL );
     	script.info( script,  "----HOLA2" );
-     	return json;
+     	return json.access_token;
     
 	} catch ( e ) {   
-		script.info( script, e.printStackTrace());
+		script.info( script, e.getMessage());
 		e.printStackTrace();         
       return "Error del copon";          
    	}
