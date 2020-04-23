@@ -28,7 +28,7 @@ def info(script,msg){
 
 static String getKK( String pp ) {
 	System.out.println( "----getKK" );
-	out.info(this,"SOME VERY USEFUL INFORMATION"); 
+	info(this,"SOME VERY USEFUL INFORMATION"); 
 	return "hola caracola";
 }
 
