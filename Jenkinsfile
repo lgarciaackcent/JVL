@@ -81,6 +81,7 @@ static String getModelId( Object script, String modelName ) {
 	} catch ( e ) {   
 		script.info( script, "Excepcion" );
 		script.info( script, e.getMessage());
+		script.info( script, e.printStackTrace() );
 		e.printStackTrace();         
       return "Error del copon";          
    	}
