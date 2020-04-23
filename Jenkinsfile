@@ -83,9 +83,9 @@ static Object getJsonToken( Object script, String path ) {
     
 
 
-static String getPolicy( Object script, String token ) {
+static String getPolicy( Object script, String token, String projectId ) {
 
-	String getPolicyURL = "http://checkmarx.ackcent.com:8080/cxarm/policymanager/projects/40031/violations";
+	String getPolicyURL = "http://checkmarx.ackcent.com:8080/cxarm/policymanager/projects/" + projectId + "/violations";
 	
 	try {  
     	def json = getJsonPolicy( script, getPolicyURL, token );
@@ -149,14 +149,11 @@ pipeline {
             	echo "Hello World - Ackcent"
             	script {
                 
-                	println( "----T0" );
-                	info(this, "hola perola");
-                	//def res = getModelId(this, "pepe" )
-                	def cnxToken = getCnxToken(this);
-                	echo "TOKEN - [ ${cnxToken} ] "
-                	def policy = getPolicy(this, cnxToken );
-                	echo "policy - [ ${policy} ] "
-                	currentBuild.result = 'FAILURE';
+                	def projectId = "40031";
+                	
+                	info(this, "Iniciando scan de " + projectId );
+
+                	
                 
 				//bat 'C:/LGV/Software/apache-maven-3.6.3-bin/apache-maven-3.6.3/bin/mvn clean compile'
 				
@@ -177,6 +174,19 @@ pipeline {
 						vulnerabilityThresholdResult: 'FAILURE', 
 						waitForResultsEnabled: true])
 					}
+					
+					def cnxToken = getCnxToken(this);
+                	echo "TOKEN - [ ${cnxToken} ] "
+                	def policy = getPolicy(this, cnxToken, projectId );
+                	echo "policy - [ ${policy} ] "
+                	if ( policy != "" ) {
+                		info(this, "Seeting build result to " + "FAILURE" );
+                		currentBuild.result = 'FAILURE';
+                	} 
+                	
+                	
+                	
+					
             	}
             	
             }
