@@ -7,12 +7,12 @@ import groovy.json.JsonSlurper
 
 static Object getJson( Object script, String path ) {
 
-def k_username = "username"; def v_username = "admin";
-def k_passwd = "password"; def v_passwd = "HVAk3Ps^/x8WFYAZ(c3)7K.,|";
-def k_grant_type = "grant_type"; def v_grant_type = "password";
-def k_scope = "scope"; def v_scope = "cxarm_api";
-def k_client_id = "client_id"; def v_client_id = "resource_owner_client";
-def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453-B7B3-9930C563627C";
+	def k_username = "username"; def v_username = "admin";
+	def k_passwd = "password"; def v_passwd = "HVAk3Ps^/x8WFYAZ(c3)7K.,|";
+	def k_grant_type = "grant_type"; def v_grant_type = "password";
+	def k_scope = "scope"; def v_scope = "cxarm_api";
+	def k_client_id = "client_id"; def v_client_id = "resource_owner_client";
+	def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453-B7B3-9930C563627C";
 
 
 	String urlParameters  = k_username + "=" + v_username + "&" +
@@ -24,7 +24,6 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
 
     byte[] postData = urlParameters.getBytes("utf-8");
     int    postDataLength = postData.length;
-
 
 	script.info( script, "getJson" ) ;
 	script.info( script, path ) ;
@@ -47,36 +46,9 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
 	} catch ( ex ) {   
 		script.info( script, "Excepcion al escribir" );
 		script.info( script, ex.getMessage() );
+		return null;
 	}
-	script.info( script, "Acabamos el try" ) ;
-	//return null;
-	
-	//myURLConnection.setRequestProperty("Content-Type", "application/json; utf-8");
-	//myURLConnection.setRequestProperty("Accept", "application/json");
-	
-	String jsonInputString = "{\"username\": \"admin\", \"password\": \"HVAk3Ps^/x8WFYAZ(c3)7K.,|\"\"}";
-	//String urlParameters  = "username=admin&password=HVAk3Ps^/x8WFYAZ(c3)7K.,|&param3=c";
-	
-	script.info( script, "Post" ) ;						
-	script.info( script, urlParameters ) ;	
-							
-	//OutputStream os = myURLConnection.getOutputStream();
-    //byte[] input = jsonInputString.getBytes("utf-8");
-    script.info( script, "Antes de setRequestProperty" ) ;	
-    script.info( script, "Despues  de setRequestProperty" ) ;
-    
-    try {
-    	script.info( script, "A escribir" ) ;	
-    	//os.write(postData, 0, postData.length);           
-	} catch ( ex ) {   
-		script.info( script, "Excepcion al escribir" );
-		script.info( script, ex.getMessage() );
-	}
-	
-	script.info( script, "getJson despues" ) ;
-	
-	
-	//return new JsonSlurper().parse(myURLConnection.inputStream);
+
 	
 }
 
@@ -101,6 +73,25 @@ static String getPP( Object script, String pp ) {
 	//info(this,"SOME VERY USEFUL INFORMATION"); 
 	return "hola caracola";
 }
+
+static String getCnxToken( Object script ) {
+
+	String getTokenURL = "https://checkmarx.ackcent.com/cxrestapi/auth/identity/connect/token";
+	
+	try {  
+    	def json = getJson( script, getTokenURL );
+    	return json.access_token;
+    
+	} catch ( e ) {   
+		script.info( script, "Excepcion" );
+		script.info( script, e.getMessage());
+		script.info( script, e.printStackTrace() );
+		e.printStackTrace();         
+      return "Error del copon";          
+   	}
+   	
+}
+
 
 
 static String getModelId( Object script, String modelName ) {
@@ -159,8 +150,10 @@ pipeline {
                 
                 	println( "----T0" );
                 	info(this, "hola perola");
-                	def res = getModelId(this, "pepe" )
-                	echo "RETORNO - [ ${res} ] "
+                	//def res = getModelId(this, "pepe" )
+                	def cnxToken = getCnxToken(this);
+                	
+                	echo "TOKEN - [ ${cnxToken} ] "
                 
                 
 				//bat 'C:/LGV/Software/apache-maven-3.6.3-bin/apache-maven-3.6.3/bin/mvn clean compile'
