@@ -47,9 +47,17 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
     int    postDataLength = postData.length;
     myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
     
-    os.write(postData, 0, postData.length);           
+    try {
+    	script.info( script, "A escribir" ) ;	
+    	os.write(postData, 0, postData.length);           
+	} catch ( ex ) {   
+		script.info( script, "Excepcion al escribir" );
+		script.info( script, ex.getMessage() );
+	}
 	
 	script.info( script, "getJson despues" ) ;
+	
+	
 	return new JsonSlurper().parse(myURLConnection.inputStream);
 	
 }
