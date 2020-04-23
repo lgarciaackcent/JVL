@@ -35,6 +35,16 @@ def getKK( script, pp ) {
 }
 
 
+static String getPP( Object script, String pp ) {
+	info( script, pp ) ;
+	//this.echo "hola peroal" 
+	//[INFO] ${msg}" 
+	//info(this,"SOME VERY USEFUL INFORMATION"); 
+	return "hola caracola";
+}
+
+
+
 
 
 pipeline {
@@ -65,7 +75,7 @@ pipeline {
                 
                 	println( "----T0" );
                 	info(this, "hola perola");
-                	def res = getKK(this, "pepe" )
+                	def res = getPP(this, "pepe" )
                 	echo "RETORNO - [ ${res} ] "
                 
                 
