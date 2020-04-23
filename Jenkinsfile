@@ -20,8 +20,8 @@ static Object getJsonPolicy( Object script, String path, String token ) {
 		//myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
     	myURLConnection.setRequestProperty( "Authorization", "Bearer " + token );
     	
-    	DataOutputStream wr = new DataOutputStream( myURLConnection.getOutputStream() );
-   		wr.write( postData );
+    	//DataOutputStream wr = new DataOutputStream( myURLConnection.getOutputStream() );
+   		//wr.write( postData );
    		script.info( script, "Retornamos en try" ) ;
    		return new JsonSlurper().parse(myURLConnection.inputStream);
 	} catch ( ex ) {   
