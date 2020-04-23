@@ -31,19 +31,22 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
 	
 	String apiString = path;
 	
-	URL apiURL = new URL( apiString );
-	HttpURLConnection myURLConnection = (HttpURLConnection) apiURL.openConnection();
-	myURLConnection.setDoOutput(true);
-	myURLConnection.setRequestMethod( "POST" );
-	myURLConnection.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
-	myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
-    try {
+	script.info( script, "Empezamos al inicio del try" ) ;
+	try {
+		URL apiURL = new URL( apiString );
+		HttpURLConnection myURLConnection = (HttpURLConnection) apiURL.openConnection();
+		myURLConnection.setDoOutput(true);
+		myURLConnection.setRequestMethod( "POST" );
+		myURLConnection.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
+		myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
+    
     	DataOutputStream wr = new DataOutputStream( myURLConnection.getOutputStream() );
    		wr.write( postData );
 	} catch ( ex ) {   
 		script.info( script, "Excepcion al escribir" );
 		script.info( script, ex.getMessage() );
 	}
+	script.info( script, "Acabamos el try" ) ;
 	
 	return null;
 	
