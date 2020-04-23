@@ -21,6 +21,7 @@ static Object getJson( Object script, String path ) {
 	URL apiURL = new URL( apiString );
 	script.info( script, "getJson antes" ) ;
 	HttpURLConnection myURLConnection = (HttpURLConnection) apiURL.openConnection();
+	myURLConnection.setRequestMethod( "POST" );
 	script.info( script, "getJson despues" ) ;
 	return new JsonSlurper().parse(myURLConnection.inputStream);
 	
