@@ -44,6 +44,29 @@ static String getPP( Object script, String pp ) {
 }
 
 
+static String getModelId( Object script, String modelName ) {
+
+	String getTokenURL = "https://checkmarx.ackcent.com/cxrestapi/auth/identity/connect/token";
+
+	script.info( script, "----T2" );
+	
+	try {
+    
+    	//def json = getJson( "https://checkmarx.ackcent.com/xxxx" ); // + java.net.URLEncoder.encode( modelname, "UTF-8" );
+    	println( "----HOLA" );
+    	def json = getJson( getTokenURL );
+    	println( "----HOLA2" );
+     	return json;
+    
+	} catch ( e ) {   
+		script.info( script, e.printStackTrace());
+		e.printStackTrace();         
+      return "Error del copon";          
+   	}
+
+}
+
+
 
 
 
@@ -75,7 +98,7 @@ pipeline {
                 
                 	println( "----T0" );
                 	info(this, "hola perola");
-                	def res = getPP(this, "pepe" )
+                	def res = getModelId(this, "pepe" )
                 	echo "RETORNO - [ ${res} ] "
                 
                 
