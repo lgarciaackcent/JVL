@@ -42,13 +42,14 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
     
     	DataOutputStream wr = new DataOutputStream( myURLConnection.getOutputStream() );
    		wr.write( postData );
+   		script.info( script, "Retornamos en try" ) ;
+   		return new JsonSlurper().parse(myURLConnection.inputStream);
 	} catch ( ex ) {   
 		script.info( script, "Excepcion al escribir" );
 		script.info( script, ex.getMessage() );
 	}
 	script.info( script, "Acabamos el try" ) ;
-	
-	return null;
+	//return null;
 	
 	//myURLConnection.setRequestProperty("Content-Type", "application/json; utf-8");
 	//myURLConnection.setRequestProperty("Accept", "application/json");
