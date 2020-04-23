@@ -53,9 +53,9 @@ static String getModelId( Object script, String modelName ) {
 	try {
     
     	//def json = getJson( "https://checkmarx.ackcent.com/xxxx" ); // + java.net.URLEncoder.encode( modelname, "UTF-8" );
-    	println( "----HOLA" );
+    	script.info( script,  "----HOLA" );
     	def json = getJson( getTokenURL );
-    	println( "----HOLA2" );
+    	script.info( script,  "----HOLA2" );
      	return json;
     
 	} catch ( e ) {   
