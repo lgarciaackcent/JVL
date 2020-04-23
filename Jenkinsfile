@@ -79,6 +79,7 @@ static String getModelId( Object script, String modelName ) {
      	return json.access_token;
     
 	} catch ( e ) {   
+		script.info( script, "Excepcion" );
 		script.info( script, e.getMessage());
 		e.printStackTrace();         
       return "Error del copon";          
