@@ -36,7 +36,7 @@ def getKK( script, pp ) {
 
 
 static String getPP( Object script, String pp ) {
-	info( script, pp ) ;
+	script.info( script, pp ) ;
 	//this.echo "hola peroal" 
 	//[INFO] ${msg}" 
 	//info(this,"SOME VERY USEFUL INFORMATION"); 
