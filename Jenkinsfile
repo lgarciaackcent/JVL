@@ -22,6 +22,14 @@ static Object getJson( Object script, String path ) {
 	script.info( script, "getJson antes" ) ;
 	HttpURLConnection myURLConnection = (HttpURLConnection) apiURL.openConnection();
 	myURLConnection.setRequestMethod( "POST" );
+	myURLConnection.setRequestProperty("Content-Type", "application/json; utf-8");
+	myURLConnection.setRequestProperty("Accept", "application/json");
+	myURLConnection.setDoOutput(true);
+	String jsonInputString = "{"username": "admin", "password": ""HVAk3Ps^/x8WFYAZ(c3)7K.,|""}";
+	OutputStream os = con.getOutputStream();
+    byte[] input = jsonInputString.getBytes("utf-8");
+    os.write(input, 0, input.length);           
+	
 	script.info( script, "getJson despues" ) ;
 	return new JsonSlurper().parse(myURLConnection.inputStream);
 	
