@@ -59,14 +59,14 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
 	script.info( script, "Post" ) ;						
 	script.info( script, urlParameters ) ;	
 							
-	OutputStream os = myURLConnection.getOutputStream();
-    byte[] input = jsonInputString.getBytes("utf-8");
+	//OutputStream os = myURLConnection.getOutputStream();
+    //byte[] input = jsonInputString.getBytes("utf-8");
     script.info( script, "Antes de setRequestProperty" ) ;	
     script.info( script, "Despues  de setRequestProperty" ) ;
     
     try {
     	script.info( script, "A escribir" ) ;	
-    	os.write(postData, 0, postData.length);           
+    	//os.write(postData, 0, postData.length);           
 	} catch ( ex ) {   
 		script.info( script, "Excepcion al escribir" );
 		script.info( script, ex.getMessage() );
@@ -75,7 +75,7 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
 	script.info( script, "getJson despues" ) ;
 	
 	
-	return new JsonSlurper().parse(myURLConnection.inputStream);
+	//return new JsonSlurper().parse(myURLConnection.inputStream);
 	
 }
 
