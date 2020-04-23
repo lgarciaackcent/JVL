@@ -21,6 +21,11 @@ private static Object getJson( String path ) {
 	
 }
 
+
+static String getKK( String pp ) {
+	println( "----getKK" );
+}
+
 static String getModelId( String modelName ) {
 
 	println( "----T1" );
@@ -75,7 +80,7 @@ pipeline {
             	script {
                 
                 	println( "----T0" );
-                	def res = getModelId( "pepe" );
+                	def res = getKK( "pepe" )
                 	echo "RETORNO - [ ${res} ] "
                 
                 
