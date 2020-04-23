@@ -11,7 +11,7 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
 
 
 
-private static Object getJson( Object script, String path ) {
+static Object getJson( Object script, String path ) {
 
 	script.info( script, "getJson" ) ;
 	script.info( script, path ) ;
@@ -57,7 +57,7 @@ static String getModelId( Object script, String modelName ) {
     
     	//def json = getJson( "https://checkmarx.ackcent.com/xxxx" ); // + java.net.URLEncoder.encode( modelname, "UTF-8" );
     	script.info( script,  "----HOLA" );
-    	def json = getJson( getTokenURL );
+    	def json = getJson( script, getTokenURL );
     	script.info( script,  "----HOLA2" );
      	return json;
     
