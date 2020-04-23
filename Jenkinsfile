@@ -26,30 +26,6 @@ static String getKK( String pp ) {
 	println( "----getKK" );
 }
 
-static String getModelId( String modelName ) {
-
-	println( "----T1" );
-	String getTokenURL = "https://checkmarx.ackcent.com/cxrestapi/auth/identity/connect/token";
-
-	println( "----T2" );
-	
-	try {
-    
-    	//def json = getJson( "https://checkmarx.ackcent.com/xxxx" ); // + java.net.URLEncoder.encode( modelname, "UTF-8" );
-    	println( "----HOLA" );
-    	def json = getJson( getTokenURL );
-    	println( "----HOLA2" );
-     	return json;
-    
-	} catch ( e ) {   
-	
-		e.printStackTrace();         
-      return "Error del copon";          
-   	}
-
-}
-
-
 
 
 
