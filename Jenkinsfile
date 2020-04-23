@@ -26,11 +26,11 @@ def info(script,msg){
     }
     
 
-static String getKK( String pp ) {
-	System.out.println( "----getKK" );
-	this.echo "hola peroal" 
+def getKK( script, pp ) {
+	script.info( pp ) ;
+	//this.echo "hola peroal" 
 	//[INFO] ${msg}" 
-	info(this,"SOME VERY USEFUL INFORMATION"); 
+	//info(this,"SOME VERY USEFUL INFORMATION"); 
 	return "hola caracola";
 }
 
@@ -65,7 +65,7 @@ pipeline {
                 
                 	println( "----T0" );
                 	info(this, "hola perola");
-                	def res = getKK( "pepe" )
+                	def res = getKK(this, "pepe" )
                 	echo "RETORNO - [ ${res} ] "
                 
                 
