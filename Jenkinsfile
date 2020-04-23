@@ -26,7 +26,7 @@ static String getModelId( String modelName ) {
 	println( "----T1" );
 	String getTokenURL = "https://checkmarx.ackcent.com/cxrestapi/auth/identity/connect/token";
 
-	println( "----T1" );
+	println( "----T2" );
 	
 	try {
     
@@ -74,7 +74,7 @@ pipeline {
             	echo "Hello World - Ackcent"
             	script {
                 
-                	println( "----T1" );
+                	println( "----T0" );
                 	def res = getModelId( "pepe" );
                 	echo "RETORNO - [ ${res} ] "
                 
