@@ -45,7 +45,9 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
     byte[] input = jsonInputString.getBytes("utf-8");
     byte[] postData = urlParameters.getBytes("utf-8");
     int    postDataLength = postData.length;
+    script.info( script, "Antes de setRequestProperty" ) ;	
     myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
+    script.info( script, "Despues  de setRequestProperty" ) ;
     
     try {
     	script.info( script, "A escribir" ) ;	
