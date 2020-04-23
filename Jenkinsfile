@@ -25,6 +25,8 @@ static String getModelId( String modelName ) {
 
 	String getTokenURL = "https://checkmarx.ackcent.com/cxrestapi/auth/identity/connect/token";
 
+	println( "----T1" );
+	echo "----T1"
 
 	try {
     
