@@ -164,7 +164,7 @@ pipeline {
 						teamPath: 'CxServer\\SP\\Company\\Desarrollo', 
 						includeOpenSourceFolders: '', osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz', osaInstallBeforeScan: false, 
 						password: '{AQAAABAAAAAQx9moxhCW9yxxy4RYWljNEQwm/xkawFV244zVHm+3OU8=}', 
-						preset: '110004', 
+						//preset: '110004', 
 						//preset: '36',
 						projectName: 'JVL2', 
 						sastEnabled: true, 
