@@ -23,11 +23,11 @@ private static Object getJson( String path ) {
 
 static String getModelId( String modelName ) {
 
+	println( "----T1" );
 	String getTokenURL = "https://checkmarx.ackcent.com/cxrestapi/auth/identity/connect/token";
 
 	println( "----T1" );
-	echo "----T1"
-
+	
 	try {
     
     	//def json = getJson( "https://checkmarx.ackcent.com/xxxx" ); // + java.net.URLEncoder.encode( modelname, "UTF-8" );
@@ -74,6 +74,7 @@ pipeline {
             	echo "Hello World - Ackcent"
             	script {
                 
+                	println( "----T1" );
                 	def res = getModelId( "pepe" );
                 	echo "RETORNO - [ ${res} ] "
                 
