@@ -1,6 +1,9 @@
 
 import groovy.json.JsonSlurper
 
+def info(script,msg){
+        script.echo "[INFO] ${msg}" 
+    }
 
 
 static Object getJsonPolicy( Object script, String path, String token ) {
@@ -16,13 +19,8 @@ static Object getJsonPolicy( Object script, String path, String token ) {
 		HttpURLConnection myURLConnection = (HttpURLConnection) apiURL.openConnection();
 		myURLConnection.setDoOutput(true);
 		myURLConnection.setRequestMethod( "GET" );
-		//myURLConnection.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
-		//myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
     	myURLConnection.setRequestProperty( "Authorization", "Bearer " + token );
-    	myURLConnection.setRequestProperty("Accept", "application/json" );
-    	
-    	//DataOutputStream wr = new DataOutputStream( myURLConnection.getOutputStream() );
-   		//wr.write( postData );
+    	myURLConnection.setRequestProperty("Accept", "application/json" );  	
    		script.info( script, "Retornamos en try" ) ;
    		return new JsonSlurper().parse(myURLConnection.inputStream);
 	} catch ( ex ) {   
@@ -82,32 +80,12 @@ static Object getJsonToken( Object script, String path ) {
 	
 }
 
-def info(script,msg){
-        script.echo "[INFO] ${msg}" 
-    }
     
-
-def getKK( script, pp ) {
-	info( script, pp ) ;
-	//this.echo "hola peroal" 
-	//[INFO] ${msg}" 
-	//info(this,"SOME VERY USEFUL INFORMATION"); 
-	return "hola caracola";
-}
-
-
-static String getPP( Object script, String pp ) {
-	script.info( script, pp ) ;
-	//this.echo "hola peroal" 
-	//[INFO] ${msg}" 
-	//info(this,"SOME VERY USEFUL INFORMATION"); 
-	return "hola caracola";
-}
 
 
 static String getPolicy( Object script, String token ) {
 
-	String getTokenURL = "http://checkmarx.ackcent.com:8080/cxarm/policymanager/projects/40030/violations";
+	String getTokenURL = "http://checkmarx.ackcent.com:8080/cxarm/policymanager/projects/40031/violations";
 	
 	try {  
     	def json = getJsonPolicy( script, getTokenURL, token );
@@ -145,34 +123,6 @@ static String getCnxToken( Object script ) {
 
 
 
-static String getModelId( Object script, String modelName ) {
-
-	String getTokenURL = "https://checkmarx.ackcent.com/cxrestapi/auth/identity/connect/token";
-
-	script.info( script, "----T2" );
-	
-	try {
-    
-    	//def json = getJson( "https://checkmarx.ackcent.com/xxxx" ); // + java.net.URLEncoder.encode( modelname, "UTF-8" );
-    	script.info( script,  "----HOLA" );
-    	def json = getJson( script, getTokenURL );
-    	script.info( script,  "----HOLA2" );
-     	return json.access_token;
-    
-	} catch ( e ) {   
-		script.info( script, "Excepcion" );
-		script.info( script, e.getMessage());
-		script.info( script, e.printStackTrace() );
-		e.printStackTrace();         
-      return "Error del copon";          
-   	}
-
-}
-
-
-
-
-
 pipeline {
     agent any
 
@@ -206,6 +156,7 @@ pipeline {
                 	echo "TOKEN - [ ${cnxToken} ] "
                 	def policy = getPolicy(this, cnxToken );
                 	echo "policy - [ ${policy} ] "
+                	currentBuild.result = 'FAILURE';
                 
 				//bat 'C:/LGV/Software/apache-maven-3.6.3-bin/apache-maven-3.6.3/bin/mvn clean compile'
 				
