@@ -157,7 +157,7 @@ pipeline {
                 
 				//bat 'C:/LGV/Software/apache-maven-3.6.3-bin/apache-maven-3.6.3/bin/mvn clean compile'
 				     
-					def 
+					 
 				
 					if ( true ) {
                 	step([$class: 'CxScanBuilder', 
