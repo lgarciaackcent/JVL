@@ -3,9 +3,43 @@ import groovy.json.JsonSlurper
 
 
 
+static Object getJsonPolicy( Object script, String path, String token ) {
+
+	
+
+    byte[] postData = urlParameters.getBytes("utf-8");
+    int    postDataLength = postData.length;
+
+	script.info( script, "getJsonPolicy" ) ;
+	script.info( script, path ) ;
+	
+	String apiString = path;
+	
+	script.info( script, "Empezamos al inicio del try" ) ;
+	try {
+		URL apiURL = new URL( apiString );
+		HttpURLConnection myURLConnection = (HttpURLConnection) apiURL.openConnection();
+		myURLConnection.setDoOutput(true);
+		myURLConnection.setRequestMethod( "GET" );
+		//myURLConnection.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
+		//myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
+    	myURLConnection.setRequestProperty( "Authorization", "Bearer " + token );
+    	
+    	DataOutputStream wr = new DataOutputStream( myURLConnection.getOutputStream() );
+   		wr.write( postData );
+   		script.info( script, "Retornamos en try" ) ;
+   		return new JsonSlurper().parse(myURLConnection.inputStream);
+	} catch ( ex ) {   
+		script.info( script, "Excepcion al escribir" );
+		script.info( script, ex.getMessage() );
+		return null;
+	}
+
+	
+}
 
 
-static Object getJson( Object script, String path ) {
+static Object getJsonToken( Object script, String path ) {
 
 	def k_username = "username"; def v_username = "admin";
 	def k_passwd = "password"; def v_passwd = "HVAk3Ps^/x8WFYAZ(c3)7K.,|";
@@ -25,7 +59,7 @@ static Object getJson( Object script, String path ) {
     byte[] postData = urlParameters.getBytes("utf-8");
     int    postDataLength = postData.length;
 
-	script.info( script, "getJson" ) ;
+	script.info( script, "getJsonToken" ) ;
 	script.info( script, path ) ;
 	
 	String apiString = path;
@@ -74,12 +108,33 @@ static String getPP( Object script, String pp ) {
 	return "hola caracola";
 }
 
+
+static String getPolicy( Object script, String token ) {
+
+	String getTokenURL = "http://checkmarx.ackcent.com:8080/cxarm/policymanager/projects/40030/violations";
+	
+	try {  
+    	def json = getJsonToken( script, getTokenURL, token );
+    	return json.policyId;
+    
+	} catch ( e ) {   
+		script.info( script, "Excepcion" );
+		script.info( script, e.getMessage());
+		script.info( script, e.printStackTrace() );
+		e.printStackTrace();         
+      return "Error del copon";          
+   	}
+   	
+}
+
+
+
 static String getCnxToken( Object script ) {
 
 	String getTokenURL = "https://checkmarx.ackcent.com/cxrestapi/auth/identity/connect/token";
 	
 	try {  
-    	def json = getJson( script, getTokenURL );
+    	def json = getJsonToken( script, getTokenURL );
     	return json.access_token;
     
 	} catch ( e ) {   
@@ -152,9 +207,8 @@ pipeline {
                 	info(this, "hola perola");
                 	//def res = getModelId(this, "pepe" )
                 	def cnxToken = getCnxToken(this);
-                	
                 	echo "TOKEN - [ ${cnxToken} ] "
-                
+                	def policy = getPolicy(this, cnxToken );
                 
 				//bat 'C:/LGV/Software/apache-maven-3.6.3-bin/apache-maven-3.6.3/bin/mvn clean compile'
 				
