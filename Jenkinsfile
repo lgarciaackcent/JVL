@@ -15,6 +15,15 @@ def k_client_id = "client_id"; def v_client_id = "resource_owner_client";
 def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453-B7B3-9930C563627C";
 
 
+	String urlParameters  = k_username + "=" + v_username + "&" +
+							k_passwd + "=" + v_passwd + "&" +
+							k_grant_type + "=" + v_grant_type + "&" +
+							k_scope + "=" + v_scope + "&" +
+							k_client_id + "=" + v_client_id + "&" +
+							k_client_secret + "=" + v_client_secret;
+
+    byte[] postData = urlParameters.getBytes("utf-8");
+    int    postDataLength = postData.length;
 
 
 	script.info( script, "getJson" ) ;
@@ -23,30 +32,33 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
 	String apiString = path;
 	
 	URL apiURL = new URL( apiString );
-	script.info( script, "getJson antes" ) ;
 	HttpURLConnection myURLConnection = (HttpURLConnection) apiURL.openConnection();
-	myURLConnection.setRequestMethod( "POST" );
-	//myURLConnection.setRequestProperty("Content-Type", "application/json; utf-8");
-	myURLConnection.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
-	//myURLConnection.setRequestProperty("Accept", "application/json");
 	myURLConnection.setDoOutput(true);
+	myURLConnection.setRequestMethod( "POST" );
+	myURLConnection.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
+	myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
+    try {
+    	DataOutputStream wr = new DataOutputStream( conn.getOutputStream() );
+   		wr.write( postData );
+	} catch ( ex ) {   
+		script.info( script, "Excepcion al escribir" );
+		script.info( script, ex.getMessage() );
+	}
+	
+	return null;
+	
+	//myURLConnection.setRequestProperty("Content-Type", "application/json; utf-8");
+	//myURLConnection.setRequestProperty("Accept", "application/json");
+	
 	String jsonInputString = "{\"username\": \"admin\", \"password\": \"HVAk3Ps^/x8WFYAZ(c3)7K.,|\"\"}";
 	//String urlParameters  = "username=admin&password=HVAk3Ps^/x8WFYAZ(c3)7K.,|&param3=c";
-	String urlParameters  = k_username + "=" + v_username + "&" +
-							k_passwd + "=" + v_passwd + "&" +
-							k_grant_type + "=" + v_grant_type + "&" +
-							k_scope + "=" + v_scope + "&" +
-							k_client_id + "=" + v_client_id + "&" +
-							k_client_secret + "=" + v_client_secret;
+	
 	script.info( script, "Post" ) ;						
 	script.info( script, urlParameters ) ;	
 							
 	OutputStream os = myURLConnection.getOutputStream();
     byte[] input = jsonInputString.getBytes("utf-8");
-    byte[] postData = urlParameters.getBytes("utf-8");
-    int    postDataLength = postData.length;
     script.info( script, "Antes de setRequestProperty" ) ;	
-    myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
     script.info( script, "Despues  de setRequestProperty" ) ;
     
     try {
