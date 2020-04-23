@@ -205,6 +205,7 @@ pipeline {
                 	def cnxToken = getCnxToken(this);
                 	echo "TOKEN - [ ${cnxToken} ] "
                 	def policy = getPolicy(this, cnxToken );
+                	echo "policy - [ ${policy} ] "
                 
 				//bat 'C:/LGV/Software/apache-maven-3.6.3-bin/apache-maven-3.6.3/bin/mvn clean compile'
 				
