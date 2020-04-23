@@ -32,7 +32,8 @@ static String getModelId( String modelName ) {
     	def json = getJson( getTokenURL );
      	return json;
     
-	} catch ( e ) {            
+	} catch ( e ) {   
+		e.printStackTrace();         
       return "Error del copon";          
    	}
 
