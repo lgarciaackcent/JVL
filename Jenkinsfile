@@ -180,7 +180,7 @@ pipeline {
                 	def policy = getPolicy(this, cnxToken, projectId );
                 	echo "policy - [ ${policy} ] "
                 	if ( policy != "" ) {
-                		info(this, "Seeting build result to " + "FAILURE" );
+                		info(this, "Seeting build result to  " + "FAILURE" );
                 		currentBuild.result = 'FAILURE';
                 	} 
                 	
