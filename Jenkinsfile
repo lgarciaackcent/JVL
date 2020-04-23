@@ -11,8 +11,11 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
 
 
 
-private static Object getJson( String path ) {
+private static Object getJson( Object script, String path ) {
 
+	script.info( script, "getJson" ) ;
+	script.info( script, path ) ;
+	
 	String apiString = path;
 	
 	URL apiURL = new URL( apiString );
