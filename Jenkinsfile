@@ -85,10 +85,10 @@ static Object getJsonToken( Object script, String path ) {
 
 static String getPolicy( Object script, String token ) {
 
-	String getTokenURL = "http://checkmarx.ackcent.com:8080/cxarm/policymanager/projects/40031/violations";
+	String getPolicyURL = "http://checkmarx.ackcent.com:8080/cxarm/policymanager/projects/40031/violations";
 	
 	try {  
-    	def json = getJsonPolicy( script, getTokenURL, token );
+    	def json = getJsonPolicy( script, getPolicyURL, token );
     	return json.violations;
     
 	} catch ( e ) {   
