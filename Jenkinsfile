@@ -111,7 +111,7 @@ static String getPolicy( Object script, String token ) {
 	
 	try {  
     	def json = getJsonPolicy( script, getTokenURL, token );
-    	return json.policyId;
+    	return json.violations;
     
 	} catch ( e ) {   
 		script.info( script, "Excepcion getPolicy" );
