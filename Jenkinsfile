@@ -19,6 +19,7 @@ static Object getJsonPolicy( Object script, String path, String token ) {
 		//myURLConnection.setRequestProperty( "Content-Type", "application/x-www-form-urlencoded"); 
 		//myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
     	myURLConnection.setRequestProperty( "Authorization", "Bearer " + token );
+    	myURLConnection.setRequestProperty("Accept", "application/json" );
     	
     	//DataOutputStream wr = new DataOutputStream( myURLConnection.getOutputStream() );
    		//wr.write( postData );
@@ -113,7 +114,7 @@ static String getPolicy( Object script, String token ) {
     	return json.policyId;
     
 	} catch ( e ) {   
-		script.info( script, "Excepcion" );
+		script.info( script, "Excepcion getPolicy" );
 		script.info( script, e.getMessage());
 		script.info( script, e.printStackTrace() );
 		e.printStackTrace();         
