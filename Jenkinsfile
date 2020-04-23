@@ -21,9 +21,14 @@ private static Object getJson( String path ) {
 	
 }
 
+def info(script,msg){
+        script.echo "[INFO] ${msg}" 
+    }
+    
 
 static String getKK( String pp ) {
 	System.out.println( "----getKK" );
+	out.info(this,"SOME VERY USEFUL INFORMATION"); 
 	return "hola caracola";
 }
 
