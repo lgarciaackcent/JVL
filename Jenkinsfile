@@ -2,6 +2,11 @@
 import groovy.json.JsonSlurper
 
 
+
+
+
+static Object getJson( Object script, String path ) {
+
 def k_username = "username"; def v_username = "admin";
 def k_passwd = "password"; def v_passwd = "HVAk3Ps^/x8WFYAZ(c3)7K.,|";
 def k_grant_type = "grant_type"; def v_grant_type = "password";
@@ -11,7 +16,6 @@ def k_client_secret = "client_secret"; def v_client_secret = "014DF517-39D1-4453
 
 
 
-static Object getJson( Object script, String path ) {
 
 	script.info( script, "getJson" ) ;
 	script.info( script, path ) ;
