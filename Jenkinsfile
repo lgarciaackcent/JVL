@@ -34,7 +34,7 @@ static Object getJson( Object script, String path ) {
     int    postDataLength = postData.length;
     myURLConnection.setRequestProperty( "Content-Length", Integer.toString( postDataLength ));
     
-    os.write(input, 0, input.length);           
+    os.write(postData, 0, postData.length);           
 	
 	script.info( script, "getJson despues" ) ;
 	return new JsonSlurper().parse(myURLConnection.inputStream);
