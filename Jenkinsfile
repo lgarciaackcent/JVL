@@ -30,9 +30,11 @@ static String getModelId( String modelName ) {
     
     	//def json = getJson( "https://checkmarx.ackcent.com/xxxx" ); // + java.net.URLEncoder.encode( modelname, "UTF-8" );
     	def json = getJson( getTokenURL );
+    	println( "----HOLA" );
      	return json;
     
 	} catch ( e ) {   
+	
 		e.printStackTrace();         
       return "Error del copon";          
    	}
