@@ -5,11 +5,6 @@ import groovy.json.JsonSlurper
 
 static Object getJsonPolicy( Object script, String path, String token ) {
 
-	
-
-    byte[] postData = urlParameters.getBytes("utf-8");
-    int    postDataLength = postData.length;
-
 	script.info( script, "getJsonPolicy" ) ;
 	script.info( script, path ) ;
 	
