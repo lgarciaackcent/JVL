@@ -26,8 +26,7 @@ if(session.getAttribute("isLoggedIn")!=null)
     <%
  Connection con=new DBConnect().connect(getServletContext().getRealPath("/WEB-INF/config.properties"));
    
-   //String id=session.getAttribute("userid").toString();    //Gets User ID  
-   String id ="pepe";
+   String id=session.getAttribute("userid").toString();    //Gets User ID  
    String action=request.getParameter("action");
    try
    {

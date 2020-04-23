@@ -161,23 +161,25 @@ pipeline {
 				
 					if ( true ) {
                 	step([$class: 'CxScanBuilder', 
-                	    incremental: true,
-                		comment: 'INC 110004 JVL2',  
-                		credentialsId: '', excludeFolders: '', excludeOpenSourceFolders: '', exclusionsSetting: 'global', 
-                		failBuildOnNewResults: false, failBuildOnNewSeverity: 'HIGH', 
-						fullScanCycle: 10, 
-						teamPath: 'CxServer\\SP\\Company\\Desarrollo', 
-						includeOpenSourceFolders: '', osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz', osaInstallBeforeScan: false, 
+                		sastEnabled: true,
+                	    incremental: false, 
+                	    	fullScanCycle: 10, 
+                	    waitForResultsEnabled: true,
+                	    vulnerabilityThresholdEnabled: false,
+                	    	highThreshold: 1, mediumThreshold: 2, lowThreshold: 5,
+                	    	failBuildOnNewResults: false, failBuildOnNewSeverity: 'HIGH', 
+                	    		vulnerabilityThresholdResult: 'FAILURE',
+                	    projectName: 'JVL2',
+                		comment: 'FUL 110004 JVL2',  
+                		teamPath: 'CxServer\\SP\\Company\\Desarrollo',
+                		//preset: '110004', 
+                		excludeFolders: '', excludeOpenSourceFolders: '', exclusionsSetting: 'global', 
+                		includeOpenSourceFolders: '', osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz', osaInstallBeforeScan: false, 
+						credentialsId: '',
 						password: '{AQAAABAAAAAQx9moxhCW9yxxy4RYWljNEQwm/xkawFV244zVHm+3OU8=}', 
-						//preset: '110004', 
-						//preset: '36',
-						projectName: 'JVL2', 
-						sastEnabled: true, 
 						serverUrl: 'https://checkmarx.ackcent.com/', 
 						sourceEncoding: '1', 
-						username: '', 
-						vulnerabilityThresholdResult: 'FAILURE', 
-						waitForResultsEnabled: true])
+						username: ''])
 					}
 					
 					def cnxToken = getCnxToken(this);
