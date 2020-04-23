@@ -27,7 +27,7 @@ def info(script,msg){
     
 
 def getKK( script, pp ) {
-	script.info( pp ) ;
+	info( script, pp ) ;
 	//this.echo "hola peroal" 
 	//[INFO] ${msg}" 
 	//info(this,"SOME VERY USEFUL INFORMATION"); 
