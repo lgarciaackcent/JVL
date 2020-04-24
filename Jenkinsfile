@@ -162,7 +162,7 @@ pipeline {
 					if ( true ) {
                 	step([$class: 'CxScanBuilder', 
                 		sastEnabled: true,
-                	    incremental: false, 
+                	    incremental: true, 
                 	    	fullScanCycle: 10, 
                 	    waitForResultsEnabled: true,
                 	    vulnerabilityThresholdEnabled: false,
@@ -170,7 +170,7 @@ pipeline {
                 	    	failBuildOnNewResults: false, failBuildOnNewSeverity: 'HIGH', 
                 	    		vulnerabilityThresholdResult: 'FAILURE',
                 	    projectName: 'JVL',
-                		comment: 'FUL JVL2',  
+                		comment: 'INC JVL2',  
                 		teamPath: 'CxServer\\SP\\Company\\Desarrollo',
                 		preset: '110005', 
                 		excludeFolders: '', excludeOpenSourceFolders: '', exclusionsSetting: 'global', 
