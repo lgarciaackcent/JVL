@@ -172,7 +172,7 @@ pipeline {
                 	    projectName: 'JVL',
                 		comment: 'FUL JVL2',  
                 		teamPath: 'CxServer\\SP\\Company\\Desarrollo',
-                		//preset: '110005', 
+                		preset: '110005', 
                 		excludeFolders: '', excludeOpenSourceFolders: '', exclusionsSetting: 'global', 
                 		includeOpenSourceFolders: '', osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz', osaInstallBeforeScan: false, 
 						credentialsId: '',
