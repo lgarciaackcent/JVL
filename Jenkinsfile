@@ -193,6 +193,7 @@ pipeline {
                 		//currentBuild.result = 'FAILURE';
                 	} else {
                 		info(this, "Seeting build result to  " + "FAILURE" );
+                		currentBuild.result = 'FAILURE';
                 	}     	
                 	
                 	
