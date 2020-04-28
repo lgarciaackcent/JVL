@@ -184,13 +184,16 @@ pipeline {
 					
 					def cnxToken = getCnxToken(this);
                 	echo "TOKEN - [ ${cnxToken} ] "
-                	def policy = getPolicy(this, cnxToken, projectId );
+                	def String policy = getPolicy(this, cnxToken, projectId );
                 	def vacio = "[]";
-                	echo "policy - [${policy}] "
-                	if ( !policy.equals(vacio) ) { 
+                	echo "policy - [${policy}] ";
+                	echo "vacio - [${vacio}] ";
+                	if ( policy == vacio ) { 
+                		info(this, "Seeting build result to  " + "SUCESS" );
+                		//currentBuild.result = 'FAILURE';
+                	} else {
                 		info(this, "Seeting build result to  " + "FAILURE" );
-                		currentBuild.result = 'FAILURE';
-                	}               	
+                	}     	
                 	
                 	
 					
