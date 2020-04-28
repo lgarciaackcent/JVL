@@ -189,9 +189,11 @@ pipeline {
                 	echo "policy - [${policy}] ";
                 	echo "vacio - [${vacio}] ";
                 	if ( policy.toString() == vacio ) { 
+                		info(this, "Se CUMPLE la Policy" );
                 		info(this, "Seeting build result to  " + "SUCESS" );
                 		//currentBuild.result = 'FAILURE';
                 	} else {
+                		info(this, "Se INCUMPLE la Policy" );
                 		info(this, "Seeting build result to  " + "FAILURE" );
                 		currentBuild.result = 'FAILURE';
                 	}     	
