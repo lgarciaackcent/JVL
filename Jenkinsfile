@@ -185,7 +185,7 @@ pipeline {
 					def cnxToken = getCnxToken(this);
                 	echo "TOKEN - [ ${cnxToken} ] "
                 	def String policy = getPolicy(this, cnxToken, projectId );
-                	def vacio = "[]";
+                	def String vacio = "[]";
                 	echo "policy - [${policy}] ";
                 	echo "vacio - [${vacio}] ";
                 	if ( policy == vacio ) { 
