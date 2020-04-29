@@ -157,7 +157,7 @@ pipeline {
 					if ( true ) {
                 	step([$class: 'CxScanBuilder', 
                 		sastEnabled: true,
-                	    incremental: true, 
+                	    incremental: false, 
                 	    	fullScanCycle: 10, 
                 	    waitForResultsEnabled: true,
                 	    vulnerabilityThresholdEnabled: false,
@@ -168,7 +168,7 @@ pipeline {
                 		comment: 'INC JVL2',  
                 		teamPath: 'CxServer\\SP\\Company\\Desarrollo',
                 		preset: '110005', 
-                		excludeFolders: 'vulnerability, target, hooks, .git, settings, controller', excludeOpenSourceFolders: '', exclusionsSetting: 'job', 
+                		excludeFolders: 'vulnerability, target, hooks, .git, .settings, controller', excludeOpenSourceFolders: '', exclusionsSetting: 'job', 
                 		includeOpenSourceFolders: '', osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz', osaInstallBeforeScan: false, 
 						credentialsId: '',
 						password: '{AQAAABAAAAAQx9moxhCW9yxxy4RYWljNEQwm/xkawFV244zVHm+3OU8=}', 
