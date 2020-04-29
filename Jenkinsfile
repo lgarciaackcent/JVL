@@ -186,7 +186,7 @@ pipeline {
                 	if ( policy.toString() == vacio ) { 
                 		info(this, "Se CUMPLE la Policy" );
                 		info(this, "Setting build result to  " + "SUCESS" );
-
+						currentBuild.result = 'SUCCESS';
                 	} else {
                 		info(this, "Se INCUMPLE la Policy" );
                 		info(this, "Setting build result to  " + "FAILURE" );
