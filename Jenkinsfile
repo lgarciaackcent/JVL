@@ -169,7 +169,7 @@ pipeline {
                 	    projectName: 'JVL',
                 		comment: 'INC JVL2',  
                 		teamPath: 'CxServer\\SP\\Company\\Desarrollo',
-                		preset: '{presetId}', 
+                		preset: {presetId}, 
                 		excludeFolders: 'Reports, admin, vulnerability, target, hooks, .git, .settings, controller, WEB-INF, docs, images', excludeOpenSourceFolders: '', exclusionsSetting: 'job', 
                 		includeOpenSourceFolders: '', osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz', osaInstallBeforeScan: false, 
 						credentialsId: '',
