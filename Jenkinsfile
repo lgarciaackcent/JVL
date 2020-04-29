@@ -153,6 +153,8 @@ pipeline {
                 	
                 	info(this, "Iniciando scan de " + projectId );
 
+					def presetId = '110005';
+				
 				
 					if ( true ) {
                 	step([$class: 'CxScanBuilder', 
@@ -167,7 +169,7 @@ pipeline {
                 	    projectName: 'JVL',
                 		comment: 'INC JVL2',  
                 		teamPath: 'CxServer\\SP\\Company\\Desarrollo',
-                		preset: '110005', 
+                		preset: '{presetId}', 
                 		excludeFolders: 'Reports, admin, vulnerability, target, hooks, .git, .settings, controller, WEB-INF, docs, images', excludeOpenSourceFolders: '', exclusionsSetting: 'job', 
                 		includeOpenSourceFolders: '', osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz', osaInstallBeforeScan: false, 
 						credentialsId: '',
