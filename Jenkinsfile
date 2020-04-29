@@ -193,7 +193,7 @@ pipeline {
                 		currentBuild.result = 'FAILURE';
                 	}     	
                 	
-                	
+                	info(this, "ADIOS" );
 					
             	}
             	
