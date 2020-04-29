@@ -168,7 +168,7 @@ pipeline {
                 		comment: 'INC JVL2',  
                 		teamPath: 'CxServer\\SP\\Company\\Desarrollo',
                 		preset: '110005', 
-                		excludeFolders: '', excludeOpenSourceFolders: '', exclusionsSetting: 'global', 
+                		excludeFolders: 'vulnerability', excludeOpenSourceFolders: '', exclusionsSetting: 'job', 
                 		includeOpenSourceFolders: '', osaArchiveIncludePatterns: '*.zip, *.war, *.ear, *.tgz', osaInstallBeforeScan: false, 
 						credentialsId: '',
 						password: '{AQAAABAAAAAQx9moxhCW9yxxy4RYWljNEQwm/xkawFV244zVHm+3OU8=}', 
