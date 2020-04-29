@@ -34,7 +34,7 @@ if(session.getAttribute("isLoggedIn")!=null)
     if(action!=null && action.equalsIgnoreCase("add") )
     {
         
-        String cardno="hola"; // request.getParameter("cardno");
+        String cardno="hola";  // request.getParameter("cardno");
         String cvv=request.getParameter("cvv");
         String expirydate=request.getParameter("expirydate");
         if(!cardno.equals("") && !cvv.equals("") && !expirydate.equals(""))
