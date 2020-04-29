@@ -153,11 +153,6 @@ pipeline {
                 	
                 	info(this, "Iniciando scan de " + projectId );
 
-                	
-                
-				//bat 'C:/LGV/Software/apache-maven-3.6.3-bin/apache-maven-3.6.3/bin/mvn clean compile'
-				     
-					
 				
 					if ( true ) {
                 	step([$class: 'CxScanBuilder', 
@@ -190,11 +185,11 @@ pipeline {
                 	echo "vacio - [${vacio}] ";
                 	if ( policy.toString() == vacio ) { 
                 		info(this, "Se CUMPLE la Policy" );
-                		info(this, "Seeting build result to  " + "SUCESS" );
-                		//currentBuild.result = 'FAILURE';
+                		info(this, "Setting build result to  " + "SUCESS" );
+
                 	} else {
                 		info(this, "Se INCUMPLE la Policy" );
-                		info(this, "Seeting build result to  " + "FAILURE" );
+                		info(this, "Setting build result to  " + "FAILURE" );
                 		currentBuild.result = 'FAILURE';
                 	}     	
                 	
