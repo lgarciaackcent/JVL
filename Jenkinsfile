@@ -355,6 +355,7 @@ pipeline {
                 	}     	
                 	
                 	def cnxToken_sast = getCnxTokenSast(this);
+                	echo "TOKEN - [ ${cnxToken_sast} ] "
                 	def reportId = getReportId(this, cnxToken_sast, projectId );
                 	echo "reportId - [${reportId}] ";
                 	
