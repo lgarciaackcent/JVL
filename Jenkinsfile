@@ -5,6 +5,42 @@ def info(script,msg){
         script.echo "[INFO] ${msg}" 
     }
 
+static Object getJsonReportId( Object script, String path, String token ) {
+
+	script.info( script, "getJsonReportId" ) ;
+	script.info( script, path ) ;
+	
+	String apiString = path;
+	
+	script.info( script, "Empezamos al inicio del try" ) ;
+	try {
+		URL apiURL = new URL( apiString );
+		HttpURLConnection myURLConnection = (HttpURLConnection) apiURL.openConnection();
+		myURLConnection.setDoOutput(true);
+		myURLConnection.setRequestMethod( "POST" );
+    	myURLConnection.setRequestProperty( "Authorization", "Bearer " + token );
+    	myURLConnection.setRequestProperty("Content-Type", "application/json; utf-8");
+    	myURLConnection.setRequestProperty("Accept", "application/json" );
+    	myURLConnection.setDoOutput(true);
+    	
+    	String jsonInputString = "{"reportType": "XML", "scanId": "1000022"}";
+    	OutputStream os = con.getOutputStream();
+    	byte[] input = jsonInputString.getBytes("utf-8");
+    	os.write(input, 0, input.length);           
+    	  	
+   		script.info( script, "Retornamos en try" ) ;
+   		return new JsonSlurper().parse(myURLConnection.inputStream);
+	} catch ( ex ) {   
+		script.info( script, "Excepcion al escribir" );
+		script.info( script, ex.getMessage() );
+		return null;
+	}
+
+	
+}
+
+
+
 
 static Object getJsonPolicy( Object script, String path, String token ) {
 
@@ -81,7 +117,23 @@ static Object getJsonToken( Object script, String path ) {
 }
 
     
+static String getReportId( Object script, String token, String projectId ) {
 
+	String getReportIdURL = "http://checkmarx.ackcent.com:8080/cxrestapi/reports/sastScan";
+	
+	try {  
+    	def json = getJsonReportId( script, getReportIdURL, token );
+    	return json.reportId;
+    
+	} catch ( e ) {   
+		script.info( script, "Excepcion getPolicy" );
+		script.info( script, e.getMessage());
+		script.info( script, e.printStackTrace() );
+		e.printStackTrace();         
+      return "Error del copon";          
+   	}
+   	
+}
 
 static String getPolicy( Object script, String token, String projectId ) {
 
@@ -237,10 +289,9 @@ pipeline {
                 	}     	
                 	
                 	
+                	def reportId = getReportId(this, cnxToken, projectId );
+                	echo "reportId - [${reportId}] ";
                 	
-                	
-                	
-                	      	
                 	
                 	info(this, "ADIOS" );
 					
