@@ -161,7 +161,7 @@ pipeline {
           					
           					def matcher = manager.getLogMatcher('.*Luis Garcia.*')
 							if(matcher?.matches()) {
-								info(this, "MATCHER " + matcher.group(1) );
+								info(this, "MATCHER " + matcher.group(0) );
     							//manager.addWarningBadge(matcher.group(1) )
     							//manager.createSummary("warning.gif").appendText(matcher.group(1), false, false, false, "red")
 							}
