@@ -150,16 +150,16 @@ pipeline {
             	
             	//info(this, currentBuild.rawBuild.getLog(100) ); 
             	
-            	
-            	
-            	if (manager.logContains('.*Luis Garcia.*')) {
-          					error("Build failed because of this and that..") 
-          		}
           		
           		echo "Bye World - Ackcent"
           		
           			
             	script {
+                
+                	if (manager.logContains('.*Luis Garcia.*')) {
+          					error("Build failed because of this and that..") 
+          			}
+                
                 
                 	def projectId = "40034";
                 	
