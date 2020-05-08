@@ -195,6 +195,11 @@ pipeline {
                 		currentBuild.result = 'FAILURE';
                 	}     	
                 	
+                	if (manager.logContains('.*[Cx-Info]: Scan results location.*')) {
+          					error("Build failed because of this and that..") 
+          			}
+                	
+                	
                 	info(this, "ADIOS" );
 					
             	}
