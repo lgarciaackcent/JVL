@@ -29,14 +29,17 @@ static Object getJsonReportId( Object script, String path, String token ) {
 		def jsonSlurper = new JsonSlurper()
 		def jsonInput = jsonSlurper.parseText '''
     		{ 
-    		"reportType": XML,
+    		"reportType": "XML",
       		"scanId": 1070194
     		}'''
     
-    
+    	
     	
     	//String jsonInputString = "{" + "reportType: " + "XML" + "scanId: 1070194" + "}";
     	String jsonInputString = jsonInput.toString();
+    	script.info( script, "jsonInput [" + jsonInput + "]" ) ;
+    	script.info( script, "jsonInputStrin ["  + jsonInputString + "]" ) ;
+    	
     	OutputStream os = myURLConnection.getOutputStream();
     	byte[] input = jsonInputString.getBytes("utf-8");
     	os.write(input, 0, input.length);           
