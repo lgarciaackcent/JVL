@@ -148,13 +148,16 @@ pipeline {
             
             	echo "Hello World - Ackcent"
             	
-            	info(this, currentBuild.rawBuild.getLog(100) ); //currentBuild.rawBuild.getLog(100);
+            	//info(this, currentBuild.rawBuild.getLog(100) ); 
             	
-            	echo "Bye World - Ackcent"
             	
-            	//if (manager.logContains('.*[Cx-Info]: Scan results location.*')) {
-          		//			error("Build failed because of this and that..") 
-          		//}
+            	
+            	if (manager.logContains('.*Luis Garcia.*')) {
+          					error("Build failed because of this and that..") 
+          		}
+          		
+          		echo "Bye World - Ackcent"
+          		
           			
             	script {
                 
