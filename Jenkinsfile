@@ -169,7 +169,7 @@ pipeline {
 					if ( true ) {
                 	step([$class: 'CxScanBuilder', 
                 		sastEnabled: true,
-                	    incremental: true, 
+                	    incremental: false, 
                 	    	fullScanCycle: 10, 
                 	    waitForResultsEnabled: true,
                 	    vulnerabilityThresholdEnabled: false,
@@ -189,6 +189,20 @@ pipeline {
 						username: ''])
 					}
 					
+					
+					if (manager.logContains('.*Scan results location.*')) {
+          					
+          					def matcher = manager.getLogMatcher('.*Scan results location.*')
+							if(matcher?.matches()) {
+								info(this, "MATCHER " + matcher.group(0) );
+    							//manager.addWarningBadge(matcher.group(1) )
+    							//manager.createSummary("warning.gif").appendText(matcher.group(1), false, false, false, "red")
+							}
+          					
+          					error("Build failed because of this and that..") 
+          			}
+          			
+					
 					def cnxToken = getCnxToken(this);
                 	echo "TOKEN - [ ${cnxToken} ] "
                 	def policy = getPolicy(this, cnxToken, projectId );
@@ -206,18 +220,7 @@ pipeline {
                 	}     	
                 	
                 	
-                	if (manager.logContains('.*Scan results location.*')) {
-          					
-          					
-          					def matcher = manager.getLogMatcher('.*Luis Garcia.*')
-							if(matcher?.matches()) {
-								info(this, "MATCHER " + matcher.group(0) );
-    							//manager.addWarningBadge(matcher.group(1) )
-    							//manager.createSummary("warning.gif").appendText(matcher.group(1), false, false, false, "red")
-							}
-          					
-          					error("Build failed because of this and that..") 
-          			}
+                	
                 	
                 	
                 	      	
