@@ -147,6 +147,9 @@ pipeline {
             steps {
             
             	echo "Hello World - Ackcent"
+            	
+            	
+          			
             	script {
                 
                 	def projectId = "40034";
@@ -195,14 +198,15 @@ pipeline {
                 		currentBuild.result = 'FAILURE';
                 	}     	
                 	
-                	if (manager.logContains('.*[Cx-Info]: Scan results location.*')) {
-          					error("Build failed because of this and that..") 
-          			}
-                	
+                	      	
                 	
                 	info(this, "ADIOS" );
 					
             	}
+            	
+            	if (manager.logContains('.*[Cx-Info]: Scan results location.*')) {
+          					error("Build failed because of this and that..") 
+          		}
             	
             }
         }
