@@ -148,7 +148,9 @@ pipeline {
             
             	echo "Hello World - Ackcent"
             	
-            	
+            	if (manager.logContains('.*[Cx-Info]: Scan results location.*')) {
+          					error("Build failed because of this and that..") 
+          		}
           			
             	script {
                 
@@ -204,9 +206,7 @@ pipeline {
 					
             	}
             	
-            	if (manager.logContains('.*[Cx-Info]: Scan results location.*')) {
-          					error("Build failed because of this and that..") 
-          		}
+            	
             	
             }
         }
