@@ -69,7 +69,7 @@ static Object getJsonPolicy( Object script, String path, String token ) {
 }
 
 
-static Object getJsonToken_sast_rest_api( Object script, String path ) {
+static Object getJsonTokenSast( Object script, String path ) {
 
 	def k_username = "username"; def v_username = "admin";
 	def k_passwd = "password"; def v_passwd = "HVAk3Ps^/x8WFYAZ(c3)7K.,|";
@@ -202,6 +202,23 @@ static String getPolicy( Object script, String token, String projectId ) {
 }
 
 
+static String getCnxTokenSast( Object script ) {
+
+	String getTokenURL = "https://checkmarx.ackcent.com/cxrestapi/auth/identity/connect/token";
+	
+	try {  
+    	def json = getJsonTokenSast( script, getTokenURL );
+    	return json.access_token;
+    
+	} catch ( e ) {   
+		script.info( script, "Excepcion" );
+		script.info( script, e.getMessage());
+		script.info( script, e.printStackTrace() );
+		e.printStackTrace();         
+      return "Error del copon";          
+   	}
+   	
+}
 
 static String getCnxToken( Object script ) {
 
@@ -336,8 +353,8 @@ pipeline {
                 		currentBuild.result = 'FAILURE';
                 	}     	
                 	
-                	def cnxToken_sast_rest_spi = getJsonToken_sast_rest_api(this);
-                	def reportId = getReportId(this, cnxToken_sast_rest_spi, projectId );
+                	def cnxToken_sast = getCnxTokenSast(this);
+                	def reportId = getReportId(this, cnxToken_sast, projectId );
                 	echo "reportId - [${reportId}] ";
                 	
                 	
