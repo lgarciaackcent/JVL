@@ -199,8 +199,23 @@ pipeline {
     							//manager.createSummary("warning.gif").appendText(matcher.group(1), false, false, false, "red")
 							}
           					
+          					//error("Build failed because of this and that..") 
+          			}
+          			
+          			if (manager.logContains('.*scanId=(?<scanId>d{1,10})&ProjectID=(?<ProjectId>\d{1,10}).*$')) {
+          					
+          					def matcher = manager.getLogMatcher('.*scanId=(?<scanId>\d{1,10})&ProjectID=(?<ProjectId>\d{1,10}).*$')
+							if(matcher?.matches()) {
+								info(this, "MATCHER 0 " + matcher.group(0) );
+								info(this, "MATCHER 0 " + matcher.group(1) );
+    							//manager.addWarningBadge(matcher.group(1) )
+    							//manager.createSummary("warning.gif").appendText(matcher.group(1), false, false, false, "red")
+							}
+          					
           					error("Build failed because of this and that..") 
           			}
+          			
+          			
           			
 					
 					def cnxToken = getCnxToken(this);
