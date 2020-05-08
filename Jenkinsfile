@@ -23,9 +23,18 @@ static Object getJsonReportId( Object script, String path, String token ) {
     	myURLConnection.setRequestProperty("Accept", "application/json" );
     	myURLConnection.setDoOutput(true);
     	
-    	JSONObject cred = new JSONObject();
+    	//JSONObject cred = new JSONObject();
+    	//def jsonSlurper = new JsonSlurper()
+		//def object = jsonSlurper.parseText('{ "report Type": "XML" }
+		def jsonSlurper = new JsonSlurper()
+		def jsonInputString = jsonSlurper.parseText '''
+    		{ "reportType": "XML",
+      		"scanId": 1070194
+    		}'''
+    
+    
     	
-    	String jsonInputString = "{" + "reportType: " + "XML" + "scanId: 1070194" + "}";
+    	//String jsonInputString = "{" + "reportType: " + "XML" + "scanId: 1070194" + "}";
     	OutputStream os = myURLConnection.getOutputStream();
     	byte[] input = jsonInputString.getBytes("utf-8");
     	os.write(input, 0, input.length);           
