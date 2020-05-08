@@ -171,10 +171,11 @@ static String getReportId( Object script, String token, String projectId ) {
 	
 	try {  
     	def json = getJsonReportId( script, getReportIdURL, token );
+    	script.info( script, "getReportId json" + json );
     	return json.reportId;
     
 	} catch ( e ) {   
-		script.info( script, "Excepcion getPolicy" );
+		script.info( script, "Excepcion getReportId" );
 		script.info( script, e.getMessage());
 		script.info( script, e.printStackTrace() );
 		e.printStackTrace();         
