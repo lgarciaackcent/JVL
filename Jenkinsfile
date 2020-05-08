@@ -167,7 +167,7 @@ static Object getJsonToken( Object script, String path ) {
     
 static String getReportId( Object script, String token, String projectId ) {
 
-	String getReportIdURL = "http://checkmarx.ackcent.com:8080/reports/sastScan";
+	String getReportIdURL = "https://checkmarx.ackcent.com/reports/sastScan";
 	
 	try {  
     	def json = getJsonReportId( script, getReportIdURL, token );
