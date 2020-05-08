@@ -157,6 +157,15 @@ pipeline {
             	script {
                 
                 	if (manager.logContains('.*Luis Garcia.*')) {
+          					
+          					
+          					def matcher = manager.getLogMatcher('.*Luis Garcia.*')
+							if(matcher?.matches()) {
+								info(this, "MATCHER " + matcher.group(1) );
+    							//manager.addWarningBadge(matcher.group(1) )
+    							//manager.createSummary("warning.gif").appendText(matcher.group(1), false, false, false, "red")
+							}
+          					
           					error("Build failed because of this and that..") 
           			}
                 
