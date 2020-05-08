@@ -28,7 +28,8 @@ static Object getJsonReportId( Object script, String path, String token ) {
 		//def object = jsonSlurper.parseText('{ "report Type": "XML" }
 		def jsonSlurper = new JsonSlurper()
 		def jsonInput = jsonSlurper.parseText '''
-    		{ "reportType": "XML",
+    		{ 
+    		"reportType": XML,
       		"scanId": 1070194
     		}'''
     
