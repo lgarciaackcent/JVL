@@ -190,23 +190,23 @@ pipeline {
 					}
 					
 					
-					if (manager.logContains('.*Scan results location.*')) {
+					//if (manager.logContains('.*Scan results location.*')) {
           					
-          					def matcher = manager.getLogMatcher('.*Scan results location.*')
-							if(matcher?.matches()) {
-								info(this, "MATCHER " + matcher.group(0) );
+          			//		def matcher = manager.getLogMatcher('.*Scan results location.*')
+					//		if(matcher?.matches()) {
+					//			info(this, "MATCHER " + matcher.group(0) );
     							//manager.addWarningBadge(matcher.group(1) )
     							//manager.createSummary("warning.gif").appendText(matcher.group(1), false, false, false, "red")
-							}
+					//		}
           					
           					//error("Build failed because of this and that..") 
-          			}
+          			//}
           			
-          			if (manager.logContains('.*scanId=(?<scanId>d{1,10})&ProjectID=(?<ProjectId>d{1,10}).*$')) {
-          					
+          			if (manager.logContains('.*Scan results location.*')) {
+          					info(this, "AL ATAQUEEERRR 1" );
           					def matcher = manager.getLogMatcher('.*scanId=(?<scanId>d{1,10})&ProjectID=(?<ProjectId>d{1,10}).*$')
 							if(matcher?.matches()) {
-								info(this, "AL ATAQUEEERRR" );
+								info(this, "AL ATAQUEEERRR 2" );
 								info(this, "MATCHER 0 " + matcher.group("scanId") );
 								info(this, "MATCHER 1 " + matcher.group("ProjectId") );
     							//manager.addWarningBadge(matcher.group(1) )
