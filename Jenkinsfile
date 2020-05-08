@@ -204,7 +204,7 @@ pipeline {
           			
           			if (manager.logContains('.*Scan results location.*')) {
           					info(this, "AL ATAQUEEERRR 1" );
-          					def matcher = manager.getLogMatcher('.*scanId=(?<scanId>d{1,10})&ProjectID=(?<ProjectId>d{1,10}).*$')
+          					def matcher = manager.getLogMatcher('.*scanId=(?<scanId>\\d{1,10})&ProjectID=(?<ProjectId>\\d{1,10}).*$')
 							if(matcher?.matches()) {
 								info(this, "AL ATAQUEEERRR 2" );
 								info(this, "MATCHER 0 " + matcher.group("scanId") );
