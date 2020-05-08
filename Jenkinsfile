@@ -196,7 +196,9 @@ pipeline {
           			
           			if (manager.logContains('.*Scan results location.*')) {
           			
-          					def matcher = manager.getLogMatcher('.*scanId=(?<scanId>\\d{1,10})&ProjectID=(?<ProjectId>\\d{1,10}).*$')
+          					// [Cx-Info]: Scan results location: https://checkmarx.ackcent.com//CxWebClient/ViewerMain.aspx?scanId=1070185&ProjectID=40034
+          			
+          					def matcher = manager.getLogMatcher('.*Scan results location: http.*scanId=(?<scanId>\\d{1,10})&ProjectID=(?<ProjectId>\\d{1,10}).*$')
 							if(matcher?.matches()) {
 								info(this, "MATCHER 0 " + matcher.group("scanId") );
 								info(this, "MATCHER 1 " + matcher.group("ProjectId") );
