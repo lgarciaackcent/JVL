@@ -200,6 +200,8 @@ pipeline {
 							if(matcher?.matches()) {
 								info(this, "MATCHER 0 " + matcher.group("scanId") );
 								info(this, "MATCHER 1 " + matcher.group("ProjectId") );
+								scanId = matcher.group("scanId");
+								ProjectId = matcher.group("ProjectId");
 								found = true;
     							//manager.addWarningBadge(matcher.group(1) )
     							//manager.createSummary("warning.gif").appendText(matcher.group(1), false, false, false, "red")
