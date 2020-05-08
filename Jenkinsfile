@@ -205,12 +205,13 @@ pipeline {
     							//manager.createSummary("warning.gif").appendText(matcher.group(1), false, false, false, "red")
 							}
           					
-          					error("Build failed because of this and that..") 
           			}
           			
           			if (found) {
           				info(this, "scanId [" + scanId + "]" );
           				info(this, "ProjectId [" + ProjectId + "]" );
+          			} else {
+          				info(this, "scanId & ProjectId not found." );
           			}
           			
           			
