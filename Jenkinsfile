@@ -23,6 +23,8 @@ static Object getJsonReportId( Object script, String path, String token ) {
     	myURLConnection.setRequestProperty("Accept", "application/json" );
     	myURLConnection.setDoOutput(true);
     	
+    	JSONObject cred = new JSONObject();
+    	
     	String jsonInputString = "{" + "reportType: " + "XML" + "scanId: 1070194" + "}";
     	OutputStream os = myURLConnection.getOutputStream();
     	byte[] input = jsonInputString.getBytes("utf-8");
