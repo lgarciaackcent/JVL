@@ -23,7 +23,7 @@ static Object getJsonReportId( Object script, String path, String token ) {
     	myURLConnection.setRequestProperty("Accept", "application/json" );
     	myURLConnection.setDoOutput(true);
     	
-    	String jsonInputString = "{" + "reportType: " + "XML" + "scanId: 1000022" + "}";
+    	String jsonInputString = "{" + "reportType: " + "XML" + "scanId: 1070194" + "}";
     	OutputStream os = myURLConnection.getOutputStream();
     	byte[] input = jsonInputString.getBytes("utf-8");
     	os.write(input, 0, input.length);           
@@ -355,7 +355,7 @@ pipeline {
                 	}     	
                 	
                 	def cnxToken_sast = getCnxTokenSast(this);
-                	echo "TOKEN - [ ${cnxToken_sast} ] "
+                	echo "TOKEN SAST - [ ${cnxToken_sast} ] "
                 	def reportId = getReportId(this, cnxToken_sast, projectId );
                 	echo "reportId - [${reportId}] ";
                 	
