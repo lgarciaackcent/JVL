@@ -206,8 +206,9 @@ pipeline {
           					
           					def matcher = manager.getLogMatcher('.*scanId=(?<scanId>d{1,10})&ProjectID=(?<ProjectId>d{1,10}).*$')
 							if(matcher?.matches()) {
-								info(this, "MATCHER 0 " + matcher.group(0) );
-								info(this, "MATCHER 0 " + matcher.group(1) );
+								info(this, "AL ATAQUEEERRR" );
+								info(this, "MATCHER 0 " + matcher.group("scanId") );
+								info(this, "MATCHER 1 " + matcher.group("ProjectId") );
     							//manager.addWarningBadge(matcher.group(1) )
     							//manager.createSummary("warning.gif").appendText(matcher.group(1), false, false, false, "red")
 							}
